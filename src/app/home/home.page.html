@@ -1,10 +1,29 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Home</ion-title>
+    <div class="header">
+        <img class="logo" src="assets/wedding-ring.png" alt="">
+        <ion-searchbar [(ngModel)]="keyword" (ionInput)="onSearch($event)" (ionCancel)="onCancel($event)">
+        </ion-searchbar>
+    </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs">docs</a> will be your guide.</p>
+  <ion-list>
+    <ng-template ngFor let-section [ngForOf]="guests">
+      <ion-list-header>
+        <ion-label>{{section.group}}</ion-label>
+      </ion-list-header>
+      <ion-item *ngFor="let member of section.members" (click)="onDetail(member.id)">
+        <ion-avatar slot="start">
+          <img [src]="member.avatar">
+        </ion-avatar>
+        <ion-label>
+          <h2>{{member.name}}</h2>
+          <h3>{{member.address}}</h3>
+        </ion-label>
+      </ion-item>
+    </ng-template>
+
+  </ion-list>
 </ion-content>
