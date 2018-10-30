@@ -1,10 +1,11 @@
+import { GuestProfilePage } from './../guest-profile/guest-profile.page';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { TabsPage } from './tabs.page';
 import { HomePage } from '../home/home.page';
 import { AboutPage } from '../about/about.page';
-import { ContactPage } from '../contact/contact.page';
+import { TablePage } from '../table/table.page';
 
 const routes: Routes = [
   {
@@ -19,18 +20,19 @@ const routes: Routes = [
       {
         path: 'people',
         outlet: 'people',
-        component: HomePage
+        component: HomePage,
       },
       {
         path: 'scanner',
         outlet: 'scanner',
-        component: AboutPage
+        component: TablePage
       },
       {
         path: 'analytics',
         outlet: 'analytics',
-        component: ContactPage
-      }
+        component: AboutPage
+      },
+      { path: 'guest-profile', outlet: 'people', component: GuestProfilePage }
     ]
   },
   {

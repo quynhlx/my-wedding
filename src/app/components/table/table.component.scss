@@ -1,0 +1,53 @@
+:host {
+  display: flex;
+  padding: 20px;
+  justify-content: center;
+}
+.table-container {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  .table {
+    width: 100%;
+    height: 100%;
+    background-color: grey;
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+    position: absolute;
+  }
+  .seat { 
+    width: 31px;
+    position: absolute;
+    height: 140px;
+    top: 50%;
+    left: 50%;
+    background-color: rgba(128, 128, 128, 0.3);
+    border-radius: 8px;
+    transform: translate(-50%, -50%) rotate(0deg);
+    flex-direction: column;
+    display: flex;
+    div {
+      border-radius: 8px;
+      flex: 1;
+      &.available {
+        background-color: orange;
+      }
+    }
+    &:nth-child(2) {
+      transform: translate(-50%, -50%) rotate(36deg);
+    }
+    &:nth-child(3) {
+      transform: translate(-50%, -50%) rotate(72deg);
+    }
+    &:nth-child(4) {
+      transform: translate(-50%, -50%) rotate(108deg);
+    }
+    &:nth-child(5) {
+      transform: translate(-50%, -50%) rotate(144deg);
+    }
+    
+  }
+}
+
+

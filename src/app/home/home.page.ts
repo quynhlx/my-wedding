@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IGuest, IGuestGroup } from '../interfaces/IGuest';
-import { NavController } from '@ionic/angular';
-
+import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -9,44 +8,86 @@ import { NavController } from '@ionic/angular';
 })
 export class HomePage implements OnInit {
   keyword: string;
-  guests: IGuestGroup[];
-  constructor() {
+  guests: IGuestGroup[] = [];
+  constructor(private router: Router, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
-    this.guests = [
-      {
-        group: 'Bạn cô dâu',
-        members: [{
-          address: 'Thủ Đức',
-          avatar: 'assets/avatar-placeholder.png',
-          name: 'Lê Xuân Quỳnh',
-          phoneNumber: '01688166199',
-          status: 1
-        },
+    this.loadData();
+  }
+
+  loadData(event?) {
+    setTimeout(() => {
+      this.guests = this.guests.concat([
         {
-          address: 'Thủ Đức',
-          avatar: 'assets/avatar-placeholder.png',
-          name: 'Lê Xuân Quỳnh',
-          phoneNumber: '01688166199',
-          status: 1
-        },
-        {
-          address: 'Thủ Đức',
-          avatar: 'assets/avatar-placeholder.png',
-          name: 'Lê Xuân Quỳnh',
-          phoneNumber: '01688166199',
-          status: 1
-        },
-        {
-          address: 'Thủ Đức',
-          avatar: 'assets/avatar-placeholder.png',
-          name: 'Lê Xuân Quỳnh',
-          phoneNumber: '01688166199',
-          status: 1
-        }]
+          group: 'Bạn cô dâu',
+          members: [{
+            address: 'Thủ Đức',
+            avatar: 'assets/avatar.jpg',
+            name: 'Lê Xuân Quỳnh',
+            phoneNumber: '01688166199',
+            status: 1
+          },
+          {
+            address: 'Thủ Đức',
+            avatar: 'assets/avatar.jpg',
+            name: 'Lê Xuân Quỳnh',
+            phoneNumber: '01688166199',
+            status: 1
+          },
+          {
+            address: 'Thủ Đức',
+            avatar: 'assets/avatar-placeholder.png',
+            name: 'Lê Xuân Quỳnh',
+            phoneNumber: '01688166199',
+            status: 1
+          },
+          {
+            address: 'Thủ Đức',
+            avatar: 'assets/avatar-placeholder.png',
+            name: 'Lê Xuân Quỳnh',
+            phoneNumber: '01688166199',
+            status: 1
+          },
+          {
+            address: 'Thủ Đức',
+            avatar: 'assets/avatar-placeholder.png',
+            name: 'Lê Xuân Quỳnh',
+            phoneNumber: '01688166199',
+            status: 1
+          },
+          {
+            address: 'Thủ Đức',
+            avatar: 'assets/avatar-placeholder.png',
+            name: 'Lê Xuân Quỳnh',
+            phoneNumber: '01688166199',
+            status: 1
+          },
+          {
+            address: 'Thủ Đức',
+            avatar: 'assets/avatar-placeholder.png',
+            name: 'Lê Xuân Quỳnh',
+            phoneNumber: '01688166199',
+            status: 1
+          },
+          {
+            address: 'Thủ Đức',
+            avatar: 'assets/avatar-placeholder.png',
+            name: 'Lê Xuân Quỳnh',
+            phoneNumber: '01688166199',
+            status: 1
+          }]
+        }
+      ]);
+      if (event) {
+        event.target.complete();
       }
-    ];
+      // App logic to determine if all data is loaded
+      // and disable the infinite scroll
+      // if (this.guests.length === 1000) {
+      //   event.target.disabled = true;
+      // }
+    }, 500);
   }
 
   onSearch(event) {
@@ -58,7 +99,7 @@ export class HomePage implements OnInit {
   }
 
   onDetail(id) {
-    this.nav.navigateForward('guest-profile');
+    this.router.navigate([{outlets: { people: ['guest-profile']}}], {relativeTo: this.route.parent});
   }
 }
 

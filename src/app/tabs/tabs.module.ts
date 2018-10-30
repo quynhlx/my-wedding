@@ -1,13 +1,12 @@
+import { GuestProfilePageModule } from './../guest-profile/guest-profile.module';
 import { IonicModule } from '@ionic/angular';
-import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { TabsPageRoutingModule } from './tabs.router.module';
-
+import { TablePageModule } from '../table/table.module';
 import { TabsPage } from './tabs.page';
-import { ContactPageModule } from '../contact/contact.module';
 import { AboutPageModule } from '../about/about.module';
 import { HomePageModule } from '../home/home.module';
 
@@ -19,7 +18,8 @@ import { HomePageModule } from '../home/home.module';
     TabsPageRoutingModule,
     HomePageModule,
     AboutPageModule,
-    ContactPageModule
+    TablePageModule,
+    GuestProfilePageModule
   ],
   declarations: [TabsPage]
 })

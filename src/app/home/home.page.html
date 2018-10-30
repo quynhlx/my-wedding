@@ -1,9 +1,9 @@
 <ion-header>
   <ion-toolbar>
     <div class="header">
-        <img class="logo" src="assets/wedding-ring.png" alt="">
-        <ion-searchbar [(ngModel)]="keyword" (ionInput)="onSearch($event)" (ionCancel)="onCancel($event)">
-        </ion-searchbar>
+      <img class="logo" src="assets/wedding-ring.png" alt="">
+      <ion-searchbar [(ngModel)]="keyword" (ionInput)="onSearch($event)" (ionCancel)="onCancel($event)">
+      </ion-searchbar>
     </div>
   </ion-toolbar>
 </ion-header>
@@ -24,6 +24,9 @@
         </ion-label>
       </ion-item>
     </ng-template>
-
   </ion-list>
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>

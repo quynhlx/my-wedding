@@ -1,0 +1,30 @@
+:host {
+  .cover {
+    min-height: 200px;
+    width: 100%;
+    background: #ee9ca7; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #ee9ca7, #ffdde1); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #ee9ca7, #ffdde1); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1rem;
+    position: relative;
+    h3, h6 {
+      color: white;
+      z-index: 2;
+      margin: 0.5rem 0;
+    }
+    h6 {
+      margin: 0;
+    }
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+}
