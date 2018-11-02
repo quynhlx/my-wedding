@@ -15,6 +15,15 @@
     top: 0;
     left: 0;
     position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    h5 {
+      text-align: center;
+      margin: 0;
+      color: white;
+      padding: 6px;
+    }
   }
   .seat { 
     width: 31px;
@@ -31,6 +40,12 @@
       border-radius: 8px;
       flex: 1;
       &.available {
+        background-color: rgba(128, 128, 128, 0.3);
+      }
+      &.none {
+        background-color: white;
+      }
+      &.arrived {
         background-color: orange;
       }
     }

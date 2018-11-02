@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IGuest, IGuestGroup } from '../interfaces/IGuest';
 import { Router, ActivatedRoute } from '@angular/router';
+// import { CallNumber } from '@ionic-native/call-number';
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -9,7 +11,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class HomePage implements OnInit {
   keyword: string;
   guests: IGuestGroup[] = [];
-  constructor(private router: Router, private route: ActivatedRoute) {
+  constructor(private router: Router,
+    private route: ActivatedRoute) {
   }
 
   ngOnInit() {
@@ -100,6 +103,13 @@ export class HomePage implements OnInit {
 
   onDetail(id) {
     this.router.navigate([{outlets: { people: ['guest-profile']}}], {relativeTo: this.route.parent});
+  }
+
+  call(member: IGuest) {
+    // this.callNumber.callNumber(member.phoneNumber.toString(), true);
+  }
+
+  addMember() {
   }
 }
 

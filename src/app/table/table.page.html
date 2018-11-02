@@ -8,17 +8,8 @@
 
 <ion-content>
   <div class="content">
-    <div class="col">
-      <app-table></app-table>
-    </div>
-    <div class="col">
-        <app-table></app-table>
-    </div>
-    <div class="col">
-        <app-table></app-table>
-    </div>
-    <div class="col">
-        <app-table></app-table>
+    <div class="col" *ngFor="let table of tables">
+      <app-table [table]="table"></app-table>
     </div>
   </div>
 </ion-content>

@@ -1,19 +1,11 @@
 <div>
   <div class="table-container">
-    <div class="seat">
-      <div class="available">
-      </div>
-      <div class="none">
+    <div class="seat" *ngFor="let nums of seats">
+      <div *ngFor='let num of nums' [ngClass]="{'arrived': num > 0, 'available': num === 0, 'none': num === -1  }">
       </div>
     </div>
-    <div class="seat">
+    <div class=table>
+      <h5>{{table?.name}}</h5>
     </div>
-    <div class="seat">
-    </div>
-    <div class="seat">
-    </div>
-    <div class="seat">
-    </div>
-    <div class=table></div>
   </div>
 </div>
