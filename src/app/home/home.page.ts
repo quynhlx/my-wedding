@@ -1,6 +1,8 @@
+import { Observable } from 'rxjs';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IGuest, IGuestGroup } from '../interfaces/IGuest';
 import { Router, ActivatedRoute } from '@angular/router';
+import { GuestService } from '../core/services/guest.service';
 // import { CallNumber } from '@ionic-native/call-number';
 
 @Component({
@@ -9,79 +11,20 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['home.page.scss']
 })
 export class HomePage implements OnInit {
-  keyword: string;
-  guests: IGuestGroup[] = [];
+  keyword: String = '';
+  guests: Observable<IGuestGroup[]>;
   constructor(private router: Router,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    private guestSvc: GuestService) {
   }
 
   ngOnInit() {
     this.loadData();
+    this.guests = this.guestSvc.groups;
   }
-
   loadData(event?) {
     setTimeout(() => {
-      this.guests = this.guests.concat([
-        {
-          group: 'Bạn cô dâu',
-          members: [{
-            address: 'Thủ Đức',
-            avatar: 'assets/avatar.jpg',
-            name: 'Lê Xuân Quỳnh',
-            phoneNumber: '01688166199',
-            status: 1
-          },
-          {
-            address: 'Thủ Đức',
-            avatar: 'assets/avatar.jpg',
-            name: 'Lê Xuân Quỳnh',
-            phoneNumber: '01688166199',
-            status: 1
-          },
-          {
-            address: 'Thủ Đức',
-            avatar: 'assets/avatar-placeholder.png',
-            name: 'Lê Xuân Quỳnh',
-            phoneNumber: '01688166199',
-            status: 1
-          },
-          {
-            address: 'Thủ Đức',
-            avatar: 'assets/avatar-placeholder.png',
-            name: 'Lê Xuân Quỳnh',
-            phoneNumber: '01688166199',
-            status: 1
-          },
-          {
-            address: 'Thủ Đức',
-            avatar: 'assets/avatar-placeholder.png',
-            name: 'Lê Xuân Quỳnh',
-            phoneNumber: '01688166199',
-            status: 1
-          },
-          {
-            address: 'Thủ Đức',
-            avatar: 'assets/avatar-placeholder.png',
-            name: 'Lê Xuân Quỳnh',
-            phoneNumber: '01688166199',
-            status: 1
-          },
-          {
-            address: 'Thủ Đức',
-            avatar: 'assets/avatar-placeholder.png',
-            name: 'Lê Xuân Quỳnh',
-            phoneNumber: '01688166199',
-            status: 1
-          },
-          {
-            address: 'Thủ Đức',
-            avatar: 'assets/avatar-placeholder.png',
-            name: 'Lê Xuân Quỳnh',
-            phoneNumber: '01688166199',
-            status: 1
-          }]
-        }
-      ]);
+      this.guestSvc.loadGuests().subscribe();
       if (event) {
         event.target.complete();
       }
@@ -90,26 +33,27 @@ export class HomePage implements OnInit {
       // if (this.guests.length === 1000) {
       //   event.target.disabled = true;
       // }
-    }, 500);
+    }, 300);
   }
 
   onSearch(event) {
-    console.log(event);
+    this.guestSvc.search(this.keyword);
   }
 
   onCancel(event) {
-    console.log(event);
+    this.guestSvc.loadGuests().subscribe();
   }
 
   onDetail(id) {
-    this.router.navigate([{outlets: { people: ['guest-profile']}}], {relativeTo: this.route.parent});
+    this.router.navigate([{outlets: { people: ['guest-profile', id]}}], {relativeTo: this.route.parent});
   }
 
   call(member: IGuest) {
     // this.callNumber.callNumber(member.phoneNumber.toString(), true);
   }
 
-  addMember() {
+  scan() {
+    this.router.navigateByUrl('/scan');
   }
 }
 

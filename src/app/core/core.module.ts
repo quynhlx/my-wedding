@@ -1,10 +1,16 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
-import { SQLite } from '@ionic-native/sqlite/ngx';
-import { DatabaseService } from './services/database.service';
 import { GuestService } from './services/guest.service';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HeaderInterceptor } from './services/http-intercepter';
+import { TableService } from './services/table.service';
+import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
 @NgModule({
-  imports: [],
-  exports: [],
+  imports: [
+    HttpClientModule
+  ],
+  exports: [
+    HttpClientModule
+  ],
   declarations: [],
   providers: [
   ],
@@ -14,13 +20,17 @@ export class CoreModule {
     return {
       ngModule: CoreModule,
       providers: [
-        SQLite,
-        DatabaseService,
-        GuestService
+        QRScanner,
+        GuestService,
+        TableService,
+        {
+          provide: HTTP_INTERCEPTORS,
+          useClass: HeaderInterceptor,
+          multi: true
+        }
       ]
     };
   }
-
 }
 
 

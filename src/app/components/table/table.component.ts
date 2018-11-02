@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { ITable } from '../../interfaces/ITable';
 
 @Component({
@@ -6,14 +6,20 @@ import { ITable } from '../../interfaces/ITable';
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss']
 })
-export class TableComponent implements OnInit {
+export class TableComponent implements OnInit, OnChanges {
   @Input() table?: ITable;
   seats = [[1, 6], [2, 7], [3, 8], [4, 9], [5, 10]];
   constructor() { }
 
   ngOnInit() {
-    this.setAvailableSeat(9);
-    this.setArrivedSeat(6);
+  }
+
+  ngOnChanges() {
+    if (!this.table) {
+      return;
+    }
+    this.setAvailableSeat(this.table.seats ? this.table.seats.length : 0);
+    this.setArrivedSeat(this.table.checkedInSeats ? this.table.checkedInSeats.length : 0);
   }
 
   setArrivedSeat(total: number) {

@@ -2,6 +2,7 @@ import { IGuest } from './IGuest';
 
 export interface ITable {
   name: string;
-  guests?: IGuest [];
-  guestsArrived?: IGuest[];
+  total: Number;
+  seats?: IGuest [];
+  checkedInSeats?: IGuest[];
 }

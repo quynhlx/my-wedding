@@ -16,7 +16,8 @@ import { CoreModule } from './core/core.module';
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
+    CoreModule.forRoot()
   ],
   providers: [
     StatusBar,

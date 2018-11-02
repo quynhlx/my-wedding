@@ -5,6 +5,8 @@ export interface IGuest {
     status: number;
     avatar: string;
     address: string;
+    group: string;
+    code: string;
 }
 
 export interface IGuestGroup {

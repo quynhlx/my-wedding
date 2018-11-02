@@ -1,5 +1,10 @@
+import { ITable } from './../interfaces/ITable';
+import { ActivatedRoute } from '@angular/router';
 import { IGuest } from './../interfaces/IGuest';
 import { Component, OnInit } from '@angular/core';
+import { GuestService } from '../core/services/guest.service';
+import { TableService } from '../core/services/table.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-guest-profile',
@@ -7,17 +12,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./guest-profile.page.scss'],
 })
 export class GuestProfilePage implements OnInit {
-  guest: IGuest;
-  constructor() { }
+  guest: Observable<IGuest>;
+  table: Observable<ITable>;
+  constructor(private guestSvc: GuestService,
+    private tableSvc: TableService,
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.guest = {
-      name: 'Lê Xuân Quỳnh',
-      phoneNumber: '0388 166 199',
-      address: 'Chung cư Mỹ Long',
-      avatar: 'assets/avatar.jpg',
-      status: 1
-    };
+    const id = this.route.snapshot.params.id;
+    this.guest = this.guestSvc.getGuest(id);
+    this.table = this.tableSvc.findByGuest(id);
   }
 
 }

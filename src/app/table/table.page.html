@@ -1,14 +1,14 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Bàn tiệc
+      {{ (tables | async).length }} Bàn tiệc
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div class="content">
-    <div class="col" *ngFor="let table of tables">
+    <div class="col" *ngFor="let table of tables | async">
       <app-table [table]="table"></app-table>
     </div>
   </div>

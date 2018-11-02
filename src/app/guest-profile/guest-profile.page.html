@@ -1,11 +1,11 @@
 <ion-header>
   <div class="cover">
-    <img [src]="guest.avatar" class="img-cover" alt="">
+    <img [src]="(guest | async)?.avatar" class="img-cover" alt="">
     <h3>
-      {{guest.name}}
+      {{(guest | async)?.name}}
     </h3>
     <h6>
-      {{guest.address}}
+      {{(guest | async)?.address}}
     </h6>
   </div>
 </ion-header>
@@ -38,11 +38,11 @@
   <ion-card>
       <ion-card-header>
         <ion-card-subtitle>Bàn tiệc</ion-card-subtitle>
-        <ion-card-title>Bàn 08</ion-card-title>
+        <ion-card-title>Bàn {{(table | async)?.name}}</ion-card-title>
       </ion-card-header>
   
       <ion-card-content>
-        <app-table></app-table>
+        <app-table *ngIf="(table | async)" [table]="table | async"></app-table>
       </ion-card-content>
     </ion-card>
 </ion-content>

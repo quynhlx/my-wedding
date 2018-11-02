@@ -1,5 +1,7 @@
+import { TableService } from './../core/services/table.service';
 import { ITable } from './../interfaces/ITable';
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-table-page',
@@ -7,35 +9,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['table.page.scss']
 })
 export class TablePage implements OnInit {
-  tables: ITable[];
+  tables: Observable<ITable[]>;
 
-  constructor() {
+  constructor(private tableSvc: TableService) {
   }
 
   ngOnInit() {
-    this.tables = [
-      {
-        name: '01 - Janeto'
-      },
-      {
-        name: '02 - Beldecor'
-      },
-      {
-        name: 'Gia đình'
-      },
-      {
-        name: 'Bạn Thân'
-      },
-      {
-        name: 'Bạn chú rể'
-      },
-      {
-        name: 'Bạn cô dâu'
-      },
-      {
-        name: 'Đồng nghiệp'
-      }
-    ];
+    this.tables = this.tableSvc.tables;
+    this.tableSvc.loadTables().subscribe();
   }
 
 }

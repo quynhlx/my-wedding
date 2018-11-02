@@ -32,7 +32,7 @@ const routes: Routes = [
         outlet: 'analytics',
         component: AboutPage
       },
-      { path: 'guest-profile', outlet: 'people', component: GuestProfilePage }
+      { path: 'guest-profile/:id', outlet: 'people', component: GuestProfilePage }
     ]
   },
   {
