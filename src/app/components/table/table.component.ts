@@ -9,6 +9,7 @@ import { ITable } from '../../interfaces/ITable';
 export class TableComponent implements OnInit, OnChanges {
   @Input() table?: ITable;
   seats = [[1, 6], [2, 7], [3, 8], [4, 9], [5, 10]];
+  constSeats = [[1, 6], [2, 7], [3, 8], [4, 9], [5, 10]];
   constructor() { }
 
   ngOnInit() {
@@ -18,7 +19,8 @@ export class TableComponent implements OnInit, OnChanges {
     if (!this.table) {
       return;
     }
-    this.setAvailableSeat(this.table.seats ? this.table.seats.length : 0);
+    this.seats = this.constSeats.slice(0);
+    this.setAvailableSeat(this.table.seats ? this.table.seats.length : 3);
     this.setArrivedSeat(this.table.checkedInSeats ? this.table.checkedInSeats.length : 0);
   }
 

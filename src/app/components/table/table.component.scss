@@ -40,9 +40,10 @@
       border-radius: 8px;
       flex: 1;
       &.available {
-        background-color: rgba(128, 128, 128, 0.3);
+        background-color: rgba(128, 128, 128, 0.3);;
       }
       &.none {
+        border: 3px solid rgba(128, 128, 128, 0.3);
         background-color: white;
       }
       &.arrived {

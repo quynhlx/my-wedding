@@ -6,6 +6,7 @@ import { TabsPage } from './tabs.page';
 import { HomePage } from '../home/home.page';
 import { AboutPage } from '../about/about.page';
 import { TablePage } from '../table/table.page';
+import { TableSelectionPage } from '../table-selection/table-selection.page';
 
 const routes: Routes = [
   {
@@ -32,7 +33,8 @@ const routes: Routes = [
         outlet: 'analytics',
         component: AboutPage
       },
-      { path: 'guest-profile/:id', outlet: 'people', component: GuestProfilePage }
+      { path: 'guest-profile/:id', outlet: 'people', component: GuestProfilePage},
+      { path: 'table-selection/:id',  outlet: 'people', component: TableSelectionPage}
     ]
   },
   {

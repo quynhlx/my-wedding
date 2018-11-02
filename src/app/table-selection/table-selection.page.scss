@@ -1,0 +1,38 @@
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    
+  }
+  
+  .col {
+    width: 50%;
+    padding: 16px 0;
+  }
+  
+  app-table {
+      &.active ::ng-deep .table {
+          background: orange !important;
+      }
+  }
+
+  @media only screen and (min-width: 721px){
+    .col {
+      width: 20%;
+      padding: 16px 0;
+    }
+  }
+  
+  @media only screen and (max-width: 720px) and (min-width: 481px){
+    .col {
+      width: 33.33%;
+      padding: 16px 0;
+    }
+  }
+  
+  @media only screen and (max-width: 480px) and (min-width: 320px){
+    .col {
+      width: 50%;
+      padding: 16px 0;
+    }
+  }
+  

@@ -9,6 +9,7 @@ import { TablePageModule } from '../table/table.module';
 import { TabsPage } from './tabs.page';
 import { AboutPageModule } from '../about/about.module';
 import { HomePageModule } from '../home/home.module';
+import { TableSelectionPageModule } from '../table-selection/table-selection.module';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { HomePageModule } from '../home/home.module';
     HomePageModule,
     AboutPageModule,
     TablePageModule,
-    GuestProfilePageModule
+    GuestProfilePageModule,
+    TableSelectionPageModule
   ],
   declarations: [TabsPage]
 })

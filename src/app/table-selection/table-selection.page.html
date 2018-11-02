@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      {{ (tables | async).length }} Bàn tiệc
+    </ion-title>
+    <ion-buttons slot="end">
+        <ion-button color="default" [disabled]="!selected" (click)="addTable()">Thêm</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="content">
+    <div class="col" *ngFor="let item of (tables | async)">
+      <app-table [ngClass]="{'active': item?.id === selected?.id}" [table]="item" (click)="select(item)"></app-table>
+    </div>
+  </div>
+</ion-content>
